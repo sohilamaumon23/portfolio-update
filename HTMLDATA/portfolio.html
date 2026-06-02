@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>S.MAUMON | Motion Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&amp;family=Geist:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#590028",
+                        "on-secondary-fixed": "#2e1221",
+                        "on-primary-fixed-variant": "#8f0044",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb1c4",
+                        "tertiary-container": "#a178ff",
+                        "on-tertiary-container": "#34007f",
+                        "on-secondary-container": "#d6a9bc",
+                        "inverse-primary": "#ba005b",
+                        "on-primary": "#65002e",
+                        "on-primary-fixed": "#3f001a",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "on-surface-variant": "#e5bcc5",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#ffb1c4",
+                        "primary": "#ffb1c4",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed": "#23005b",
+                        "surface-bright": "#3a3939",
+                        "outline-variant": "#5c3f46",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed-dim": "#e9bacd",
+                        "secondary-container": "#5f3c4d",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f1f",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#ff4a8d",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#ac878f",
+                        "secondary": "#e9bacd",
+                        "secondary-fixed": "#ffd8e7",
+                        "surface": "#131313",
+                        "on-tertiary": "#3c0090",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffd9e1",
+                        "on-secondary-fixed-variant": "#5f3c4d",
+                        "on-secondary": "#462736",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#d1bcff",
+                        "surface-container-high": "#2a2a2a",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Geist"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Geist"],
+                        "headline-lg": ["Playfair Display"],
+                        "code-sm": ["Geist"],
+                        "headline-xl": ["Playfair Display"],
+                        "body-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+        body {
+            background-color: #050505;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background-color: #ff4a8d;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px #ff4a8d, 0 0 30px #ff4a8d;
+            transform: translate(-50%, -50%);
+        }
+        .custom-cursor.expand {
+            transform: translate(-50%, -50%) scale(4);
+            background-color: rgba(255, 74, 141, 0.3);
+        }
+        .reveal-text {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-text.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .parallax-container {
+            overflow: hidden;
+        }
+        .parallax-img {
+            transform: scale(1.1);
+            will-change: transform;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-serif {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 10px rgba(255, 74, 141, 0.3);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 74, 141, 0.4);
+            border-color: #ff4a8d;
+        }
+        .hero-title {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+            color: transparent;
+        }
+        .hero-title-fill {
+            background: linear-gradient(to bottom, #ffb1c4, #ff4a8d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .skill-card-container {
+            perspective: 1000px;
+        }
+        .skill-card {
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 74, 141, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        .skill-card:hover::after {
+            opacity: 1;
+        }
+        .neon-input:focus {
+            border-color: #ff4a8d;
+            box-shadow: 0 0 10px rgba(255, 74, 141, 0.3);
+            outline: none;
+        }
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- Custom Cursor -->
+<div class="custom-cursor" id="cursor"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/5 shadow-2xl">
+<div class="flex justify-between items-center w-full px-margin-desktop py-base max-w-[1440px] mx-auto">
+<span class="font-headline-md text-headline-md font-black tracking-tighter text-on-surface uppercase glow-serif">S.MAUMON</span>
+<div class="hidden md:flex gap-lg items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 interactive" href="#work">Work</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 interactive" href="#about">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 interactive" href="#skills">Skills</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 interactive" href="#contact">Contact</a>
+<button class="px-md py-sm bg-primary-container text-on-primary-fixed font-bold rounded-xl shadow-lg active:scale-95 transition-transform duration-150 interactive">Hire Me</button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary cursor-pointer interactive">menu</span>
+</div>
+</div>
+</nav>
+<main class="relative w-full">
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex flex-col justify-center items-center px-margin-desktop overflow-hidden" id="hero">
+<canvas id="particles-canvas"></canvas>
+<div class="z-10 text-center">
+<h2 class="font-label-md text-label-md text-primary tracking-[0.5em] uppercase mb-md reveal-text">Motion Designer &amp; Visual Artist</h2>
+<h1 class="font-headline-xl text-headline-xl mb-lg reveal-text glow-serif">
+<span class="block hero-title-fill">CRAFTING MOTION.</span>
+<span class="block">TELLING STORIES.</span>
+<span class="block hero-title-fill">DEFINING BRANDS.</span>
+</h1>
+<div class="flex gap-md justify-center reveal-text">
+<a class="px-lg py-sm border border-primary text-primary font-bold rounded-xl neon-glow transition-all interactive" href="#work">VIEW SHOWREEL</a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-xl px-margin-desktop max-w-[1440px] mx-auto scroll-reveal" id="about">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden glass-card">
+<img class="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 transition-all duration-700" data-alt="Portrait of Sohila Maumon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzgNFNxkLqIdbWhElKYOJs8ZBTQmcHXa48WGBp7Fn61UaPB5NQUXfAO7TxNN1M2t0fGVDpW6EKM9obrwYSS-FkK3sQvrqvt6xvz1nGBXZGhDuRnNHgEl0gjZ_CWwfm3htBC1517FRKAI6aY7iCYgiSnCYc-vFoxe4XuAy8V3gOz1W7dGNY4OJRRd4066YA-2Ydt1a26REj3KaSHuZ56UIO4X4QGNL4-w5ATyS0YUxceF3by6Pq_Nqh2572shWkvloS4AHfwYx1ssdS"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/20 blur-3xl rounded-full"></div>
+</div>
+<div class="md:col-span-7 pl-0 md:pl-lg">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase block mb-sm">The Artist</span>
+<h2 class="font-headline-lg text-headline-lg mb-md glow-serif">Sohila Maumon</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed max-w-2xl">
+                    Passionate about storytelling, smooth transitions, and dynamic animations. Creating engaging visual content for brands and social media. With a degree from <span class="text-primary font-semibold">Future University in Egypt</span>, I blend technical precision with artistic flair.
+                </p>
+<div class="flex gap-lg border-t border-white/10 pt-lg">
+<div>
+<span class="font-headline-md text-headline-md text-primary block">5+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Years Exp</span>
+</div>
+<div>
+<span class="font-headline-md text-headline-md text-primary block">150+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Projects</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-xl bg-surface-container-lowest px-margin-desktop" id="skills">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-lg text-center md:text-left scroll-reveal">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase block mb-sm">Stack</span>
+<h2 class="font-headline-lg text-headline-lg glow-serif">Technical Proficiency</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Skill Card 1 -->
+<div class="skill-card-container scroll-reveal">
+<div class="skill-card glass-card p-lg rounded-xl neon-glow transition-all group h-full">
+<span class="material-symbols-outlined text-primary text-[48px] mb-md group-hover:scale-110 transition-transform block" style="font-variation-settings: 'FILL' 1;">movie_edit</span>
+<h3 class="font-headline-md text-[24px] mb-sm glow-serif">VFX</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Integrating high-end visual effects and particle systems into seamless live-action footage.</p>
+</div>
+</div>
+<!-- Skill Card 2 -->
+<div class="skill-card-container scroll-reveal" style="transition-delay: 100ms;">
+<div class="skill-card glass-card p-lg rounded-xl neon-glow transition-all group h-full">
+<span class="material-symbols-outlined text-primary text-[48px] mb-md group-hover:scale-110 transition-transform block" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<h3 class="font-headline-md text-[24px] mb-sm glow-serif">Sound Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Crafting immersive auditory experiences that pulse in perfect harmony with every visual frame.</p>
+</div>
+</div>
+<!-- Skill Card 3 -->
+<div class="skill-card-container scroll-reveal" style="transition-delay: 200ms;">
+<div class="skill-card glass-card p-lg rounded-xl neon-glow transition-all group h-full">
+<span class="material-symbols-outlined text-primary text-[48px] mb-md group-hover:scale-110 transition-transform block" style="font-variation-settings: 'FILL' 1;">layers</span>
+<h3 class="font-headline-md text-[24px] mb-sm glow-serif">After Effects</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Mastery of complex compositions, expressions, and dynamic motion graphic workflows.</p>
+</div>
+</div>
+<!-- Skill Card 4 -->
+<div class="skill-card-container scroll-reveal" style="transition-delay: 300ms;">
+<div class="skill-card glass-card p-lg rounded-xl neon-glow transition-all group h-full">
+<span class="material-symbols-outlined text-primary text-[48px] mb-md group-hover:scale-110 transition-transform block" style="font-variation-settings: 'FILL' 1;">video_camera_front</span>
+<h3 class="font-headline-md text-[24px] mb-sm glow-serif">Premiere Pro</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision editing and color grading to deliver high-impact narrative flow for commercial brands.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="py-xl px-margin-desktop max-w-[1440px] mx-auto" id="work">
+<div class="flex justify-between items-end mb-lg scroll-reveal">
+<div>
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase block mb-sm">Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg glow-serif">Selected Works</h2>
+</div>
+<div class="hidden md:block">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary border-b border-primary/20 pb-1 interactive" href="#">View Full Archive</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="parallax-container scroll-reveal md:col-span-2 group interactive">
+<div class="relative aspect-[21/9] rounded-xl overflow-hidden glass-card">
+<img class="parallax-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuQlX-esTxADBUdksJV5g6JnAJ4TvH0u-XV2YVv6LLBHl7Pp-lXUGpJhYdax3GZl3cmEF2_gjCYQ1JyDm4V5YW2YeNmwLax2aaXnxsLPXHZcu8RZQxrcWxgZvoyv_BwssyxFJYt_XNZRmDgyyNkLwFI5FhN7-SWoqg7FBFVU5_hYfg7bR8YSvaak5LfYq0KhbrWefgUJXhu7BtQBMEG5ptIW7bed6prlJMLB6kAI0ernkMMZUZMOUKutya50WW9-T16smF433_TQc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-base left-base md:bottom-lg md:left-lg">
+<span class="px-sm py-xs bg-primary/10 text-primary border border-primary/20 font-code-sm rounded-lg mb-sm inline-block">BRAND IDENTITY</span>
+<h3 class="font-headline-md text-headline-md text-on-surface glow-serif">Digital Echoes 2024</h3>
+</div>
+</div>
+</div>
+<div class="parallax-container scroll-reveal group interactive">
+<div class="relative aspect-video rounded-xl overflow-hidden glass-card">
+<img class="parallax-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp4DO2buM1CDfUdA6gmouxqLf_ItgTrAUpM5oLn7TFF3QryluLtRQJv8bslUl7SINaE1i1uDU4ITpQjrr00-l-sbAxc0KizTd3ZifU1m08mHWpqal-Mh21Q1jiow7Yw6wU_EVS4DdpT5cVQfFXHNOtkaOMgR-_RlQjcIMdPhhdy_MEzq6gkU6Lmrw_KsjtBtegKz5aOUGAIq1T6i32bkuSENFjR6NaXqaOJiFpYH5eOp41DlN3qM59Igk16yXX1lrUn_GiV9iyt4u7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-base left-base md:bottom-md md:left-md">
+<span class="px-sm py-xs bg-primary/10 text-primary border border-primary/20 font-code-sm rounded-lg mb-sm inline-block">SOCIAL EDIT</span>
+<h3 class="font-headline-md text-[24px] text-on-surface glow-serif">Neon Horizon Commercial</h3>
+</div>
+</div>
+</div>
+<div class="parallax-container scroll-reveal group interactive" style="transition-delay: 200ms;">
+<div class="relative aspect-video rounded-xl overflow-hidden glass-card">
+<img class="parallax-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYFOFCulrzlpX5lb0034donmUkbKCh_aomprN8UooKCBzC5Apvr4hs7PQjtTdsztpo8863_j08rtAp5KsbkwqtxOgYL2gub29lSMC8DzyK2ak86A2lSuDoqCRhAwv6PlwzMI1QRck78N9dEShJrhZfon8t0wPRUR-DKP5yPEvz8Fai4ZBXHaUHAOA4ZTSuCDATXCk9SftYQvc_FgWXouu8ICwrRSUBzCrzfC7lbDGJ_cMZbQ9i7J44bvrokGpz1yBm60sUFfH9GMno"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-base left-base md:bottom-md md:left-md">
+<span class="px-sm py-xs bg-primary/10 text-primary border border-primary/20 font-code-sm rounded-lg mb-sm inline-block">VFX REEL</span>
+<h3 class="font-headline-md text-[24px] text-on-surface glow-serif">Glitch In The Machine</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-xl px-margin-desktop bg-surface-container-low" id="contact">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="scroll-reveal">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase block mb-sm">Connect</span>
+<h2 class="font-headline-lg text-headline-lg mb-md glow-serif">Let's Collaborate</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">Available for freelance motion design projects and creative partnerships worldwide.</p>
+<div class="space-y-md">
+<div class="flex items-center gap-md group interactive">
+<div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<span class="font-body-md text-body-md">hello@smaumon.com</span>
+</div>
+<div class="flex items-center gap-md group interactive">
+<div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<span class="font-body-md text-body-md">Cairo, Egypt / Remote</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl scroll-reveal" style="transition-delay: 200ms;">
+<form class="space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<input class="bg-[#050505] border-white/10 text-on-surface focus:ring-0 rounded-lg p-md transition-all font-body-md neon-input interactive" placeholder="Full Name" type="text"/>
+<input class="bg-[#050505] border-white/10 text-on-surface focus:ring-0 rounded-lg p-md transition-all font-body-md neon-input interactive" placeholder="Email Address" type="email"/>
+</div>
+<input class="w-full bg-[#050505] border-white/10 text-on-surface focus:ring-0 rounded-lg p-md transition-all font-body-md neon-input interactive" placeholder="Subject" type="text"/>
+<textarea class="w-full bg-[#050505] border-white/10 text-on-surface focus:ring-0 rounded-lg p-md transition-all font-body-md neon-input interactive" placeholder="Your Message" rows="4"></textarea>
+<button class="w-full py-md bg-primary text-on-primary font-bold rounded-lg shadow-lg hover:shadow-primary/30 active:scale-95 transition-all interactive">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-surface-container-lowest py-xl border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop w-full max-w-[1440px] mx-auto gap-lg">
+<span class="font-headline-md text-headline-md text-primary uppercase font-bold glow-serif">S.MAUMON</span>
+<span class="font-label-md text-label-md text-on-surface-variant order-3 md:order-none">© 2024 SOHILA MAUMON. ALL MOTION RESERVED.</span>
+<div class="flex gap-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all interactive" href="#">Instagram</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all interactive" href="#">Vimeo</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all interactive" href="#">LinkedIn</a>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all interactive" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
+</div>
+</div>
+</footer>
+<script>
+    // Custom Cursor Logic with Lerp
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+        const lerp = 0.15;
+        cursorX += (mouseX - cursorX) * lerp;
+        cursorY += (mouseY - cursorY) * lerp;
+        
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    const interactives = document.querySelectorAll('.interactive, button, a, input, textarea');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    });
+
+    // Particle Background
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedY = -(Math.random() * 1 + 0.2);
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.alpha = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            if (this.y < 0) this.reset();
+        }
+        draw() {
+            ctx.fillStyle = `rgba(255, 74, 141, ${this.alpha})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Intersection Observer for Entrance Animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal, .reveal-text').forEach(el => revealObserver.observe(el));
+
+    // Initial Hero Trigger
+    window.addEventListener('load', () => {
+        document.querySelectorAll('#hero .reveal-text').forEach((el, index) => {
+            setTimeout(() => el.classList.add('active'), 200 * index);
+        });
+    });
+
+    // 3D Tilt Effect and Mouse Glow for Skill Cards
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = -(x - centerX) / 10;
+            
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    });
+
+    // Project Parallax Effect
+    window.addEventListener('scroll', () => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        
+        const parallaxImages = document.querySelectorAll('.parallax-img');
+        parallaxImages.forEach(img => {
+            const rect = img.parentElement.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                const speed = 0.15;
+                const distance = (windowHeight / 2) - (rect.top + rect.height / 2);
+                const offset = distance * speed;
+                img.style.transform = `scale(1.2) translateY(${offset}px)`;
+            }
+        });
+    });
+</script>
+</body></html>

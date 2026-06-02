@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global custom styles taken from original HTML */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  background-color: #050505;
+  overflow-x: hidden;
+  cursor: none;
+}
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-color: #ff4a8d;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow:
+    0 0 15px #ff4a8d,
+    0 0 30px #ff4a8d;
+  transform: translate(-50%, -50%);
+}
+.custom-cursor.expand {
+  transform: translate(-50%, -50%) scale(4);
+  background-color: rgba(255, 74, 141, 0.3);
+}
+.reveal-text {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.reveal-text.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.glass-card {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.parallax-container {
+  overflow: hidden;
+}
+.parallax-img {
+  transform: scale(1.1);
+  will-change: transform;
+}
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.glow-serif {
+  font-family: "Playfair Display", serif;
+  text-shadow: 0 0 10px rgba(255, 74, 141, 0.3);
+}
+.neon-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 74, 141, 0.4);
+  border-color: #ff4a8d;
+}
+.hero-title {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
+.hero-title-fill {
+  background: linear-gradient(to bottom, #ffb1c4, #ff4a8d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.skill-card-container {
+  perspective: 1000px;
+}
+.skill-card {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 74, 141, 0.15) 0%,
+    transparent 50%
+  );
+  z-index: 1;
+}
+.skill-card:hover::after {
+  opacity: 1;
+}
+.neon-input:focus {
+  border-color: #ff4a8d;
+  box-shadow: 0 0 10px rgba(255, 74, 141, 0.3);
+  outline: none;
+}
+#particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
